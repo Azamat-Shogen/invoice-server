@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "nodemon --inspect src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "AZ",
@@ -12,5 +12,8 @@
   "dependencies": {
     "express": "^4.18.1",
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0"
   }
 }
