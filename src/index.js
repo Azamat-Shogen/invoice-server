@@ -11,10 +11,11 @@ app.get('/', (req, res) => {
     res.send('Hello world');
 });
 
-app.get('/home', ()=> {
+console.log('hello world');
 
+app.get('/home', () => {
+    console.log('');
 });
 app.listen(PORT, () => {
-    
     console.log(`Server is running on port: ${PORT}`);
 });
