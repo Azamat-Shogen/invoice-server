@@ -1,21 +1,20 @@
 import express from 'express';
+import errorHandler from './modules/core/errorHandler';
+require('dotenv').config();
+import logger from './modules/core/logger';
+import parseHandler from './modules/core/parseResponse';
+import dbConnect from './modules/core/db';
+import routes from './modules/core/routes';
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 8000;
 
-app.get('/', (req, res) => {
-    const a = 4;
-    const b = 9;
-    console.log(a + b);
+dbConnect(app); // database connection
+logger(app); // should be at the top // log usefull information
+parseHandler(app); // body parser
+routes(app); // call all routes
+errorHandler(app); // handle errors
 
-    res.send('Hello world');
-});
-
-console.log('hello world');
-
-app.get('/home', () => {
-    console.log('');
-});
 app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);
 });
