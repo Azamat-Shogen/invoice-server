@@ -6,15 +6,18 @@ import runValidation from './validators';
 import userLogin from './controllers/userLogin';
 import getUserById from './controllers/getUserById';
 import userDeleteById from './controllers/userDeleteById';
+import requireLogin from './controllers/requireLogin';
+import adminMiddleware from './controllers/adminMiddlewar';
 
 
 const router = express.Router();
 
-router.get('/users', getAllUsers);
 router.post('/register', userRegisterValidator, runValidation, registerUser);
 router.post('/login', userLoginValidator, runValidation, userLogin);
-router.get('/user/:id', getUserById);
-router.delete('/user/:id', userDeleteById);
+router.get('/users', requireLogin, adminMiddleware, getAllUsers);
+
+router.get('/user/:id', requireLogin, getUserById);
+router.delete('/user/:id', adminMiddleware, requireLogin, userDeleteById);
 
 
 
