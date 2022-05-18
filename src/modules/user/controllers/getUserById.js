@@ -1,7 +1,6 @@
 import User from '../userModel';
 
 
-
 const getUserById = (req, res) => {
     const userId = req.params.id;
   
