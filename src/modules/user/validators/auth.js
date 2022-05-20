@@ -2,6 +2,7 @@ import { check  } from 'express-validator';
 
 exports.userRegisterValidator = [
     check('name')
+        .trim()
         .not()
         .isEmpty()
         .withMessage('Name is required')
@@ -35,4 +36,24 @@ exports.userLoginValidator = [
         .withMessage('Password must be at least 6 character long')
         .isLength({max: 32})
         .withMessage('Password is too long'),
+];
+
+exports.userUpdateValidator = [
+    check('name')
+        .trim()
+        .not()
+        .isEmpty()
+        .withMessage('Name is required')
+        .isLength({min: 2})
+        .withMessage('Name is too short')
+        .isLength({max: 32})
+        .withMessage('Name is too long')
+        .optional(),
+
+    check('password')
+        .isLength({min: 6})
+        .withMessage('Password must be at least 6 character long')
+        .isLength({max: 32})
+        .withMessage('Password is too long')
+        .optional(),
 ];
