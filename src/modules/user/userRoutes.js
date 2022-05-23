@@ -9,6 +9,7 @@ import userDeleteById from './controllers/userDeleteById';
 import requireLogin from './controllers/requireLogin';
 import adminMiddleware from './controllers/adminMiddlewar';
 import userUpdate from './controllers/userUpdate';
+import userChangeStatus from './controllers/userChangeStatus';
 
 
 const router = express.Router();
@@ -18,7 +19,8 @@ router.post('/login', userLoginValidator, runValidation, userLogin);
 router.get('/users', requireLogin, adminMiddleware, getAllUsers);
 
 router.get('/user/:id', requireLogin, getUserById);
-router.delete('/user/:id', adminMiddleware, requireLogin, userDeleteById);
+router.delete('/admin/user/:id', requireLogin,adminMiddleware, userDeleteById);
+router.patch('/admin/user/:id', requireLogin, adminMiddleware, userChangeStatus);
 router.put('/user/update', requireLogin, userUpdateValidator, runValidation,  userUpdate);
 
 export default router;
