@@ -1,32 +1,39 @@
 import User from '../userModel';
 import CompanyAccount from '../../company/companyModel';
+import mongoose from 'mongoose';
+
 
 
 const userDeleteById = async (req, res) => {
-    const userId = req.params.id;
+   
+    const { userId } = req.body;
 
-    await User.findOneAndRemove({_id: userId })
-        .then(result => {
+    if(!mongoose.Types.ObjectId.isValid(userId)){
+        res.status(404).json({ error: 'not a valid user Id' });
+    
+    }
 
-            // remove company account first
-            if('company' in result) {
-                CompanyAccount.findOneAndRemove({ _id: result.company })
-                    .then(companyResult => {
-                        console.log('company deleted successfully: ', companyResult.companyName);
-                    })
-                    .catch(companyError => {
-                        console.log(companyError);
-                        res.status(400).json({ error: 'failed to delete the company prior the user'});
-                    });
-            }
+    if (!userId){
+        res.status(400).json({ error: 'user Id is missing'});
+    }
 
-            console.log('result is: ', result);
-            res.status(200).json({ message: `User: ${result.name} - deleted successfully`} );
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(400).json({ error: err.message});
-        });
+    try {
+        const user = await User.findById(userId);
+        const company = user.company;
+        if(company){
+            console.log('company: ... ', company);
+            await CompanyAccount.findOneAndRemove({_id: company});
+        }
+
+        await User.findOneAndRemove({_id: userId});
+
+        res.status(200).json({ message: `User: ${user.name} - deleted successfully`} );
+        
+    } catch (error) {
+        res.status(200).json({ error: error.message } );
+    } 
+
 };
+
 
 export default userDeleteById;
