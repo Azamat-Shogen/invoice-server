@@ -7,8 +7,8 @@ const registerUser = async (req, res) => {
     const {name, email, password } = req.body;
 
     try{ 
-        const existingUser = await User.findOne({email});
-        if(existingUser) return res.status(404).json( { message: 'user with this email already exists' } );
+        const existingUser = await User.findOne({ email });
+        if(existingUser) return res.status(500).json({ error: 'user with this email already exists' });
  
         const hashedPassword = await bcrypt.hash(password, 12); // "12" - is called 'salt' - the level of difficulty ;
  
