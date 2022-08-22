@@ -31,7 +31,7 @@ const userSchema  = mongoose.Schema({
 
     status:{
         type: String,
-        default: 'Pending'
+        default: 'Active'
     },
 
     resetPasswordLink: { // will generate a token and save it in the database

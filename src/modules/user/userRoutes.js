@@ -26,5 +26,8 @@ router.put('/user/update', requireLogin, userUpdateValidator, runValidation,  us
 
 export default router;
 
+
+
+
 // router.delete('/admin/user/:id', requireLogin,adminMiddleware, userDeleteById);
 // router.patch('/admin/user/:id', requireLogin, adminMiddleware, userChangeStatus);
