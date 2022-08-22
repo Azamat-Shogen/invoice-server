@@ -63,3 +63,5 @@ export default function createCompanyAccount(req, res){
         res.status(401).json({error: 'not authorized'});
     }
 }
+
+
