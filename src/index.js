@@ -15,6 +15,12 @@ logger(app); // should be at the top // log usefull information
 parseHandler(app); // body parser
 applyCors(app);
 routes(app); // call all routes
+
+app.get('/', (req, res) => {
+    res.send('Hello from invoice server API');
+});
+  
+
 errorHandler(app); // handle errors
 
 app.listen(PORT, () => {
