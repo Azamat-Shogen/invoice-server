@@ -1,4 +1,4 @@
-import User from '../userModel';
+import User from '../userModel.js';
 import lodash from 'lodash';
 
 

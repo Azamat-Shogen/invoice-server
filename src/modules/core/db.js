@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
-require('dotenv').config();
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default function dbConnect(){
     mongoose.connect(process.env.DATABASE, {

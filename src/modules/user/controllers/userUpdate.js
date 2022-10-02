@@ -1,13 +1,13 @@
-import User from '../userModel';
+import User from '../userModel.js';
 import bcrypt from 'bcryptjs';
-import { get } from 'lodash';
+import lodash from 'lodash';
 
 
 const userUpdate = async (req, res) => {
     // console.log(req.auth);
     const data = req.body;
    
-    const userId = get(req.auth, 'id', 'none');
+    const userId = lodash.get(req.auth, 'id', 'none');
 
     if(data.password){
         const p = await bcrypt.hash(data.password, 12);
