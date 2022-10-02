@@ -1,14 +1,14 @@
-import { get } from 'lodash';
-import ComapnyAccount from '../companyModel';
+import _ from 'lodash';
+import ComapnyAccount from '../companyModel.js';
 
 
 export default async function companyAccountGetById(req, res){
-    const companyId = get(req, 'params.companyId');
+    const companyId = _.get(req, 'params.companyId');
 
     await ComapnyAccount.findOne({_id: companyId})
         .exec()
         .then( result => {
-            res.status(200).json(result)
+            res.status(200).json(result);
         })
         .catch(err => {
             console.log(err);
