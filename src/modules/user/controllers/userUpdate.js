@@ -1,4 +1,4 @@
-import User from '../userModel.js';
+import User from '../userModel';
 import bcrypt from 'bcryptjs';
 import lodash from 'lodash';
 

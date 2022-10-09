@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
-import CompanyAccount from '../companyModel.js';
-import User from '../../user/userModel.js';
+import CompanyAccount from '../companyModel';
+import User from '../../user/userModel';
 import jwt from 'jsonwebtoken';
+import { get } from 'lodash';
 
 
 export default function createCompanyAccount(req, res){
@@ -62,5 +63,3 @@ export default function createCompanyAccount(req, res){
         res.status(401).json({error: 'not authorized'});
     }
 }
-
-

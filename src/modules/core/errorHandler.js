@@ -7,4 +7,3 @@ function apiNotFound(req, res){
 export default function errorHandler(app){
     app.use(apiNotFound);
 }
-

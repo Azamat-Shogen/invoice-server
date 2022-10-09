@@ -1,5 +1,5 @@
-import User from '../userModel.js';
-import CompanyAccount from '../../company/companyModel.js';
+import User from '../userModel';
+import CompanyAccount from '../../company/companyModel';
 import mongoose from 'mongoose';
 
 

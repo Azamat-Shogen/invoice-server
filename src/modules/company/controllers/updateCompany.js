@@ -1,4 +1,4 @@
-import CompanyAccount from '../companyModel.js';
+import CompanyAccount from '../companyModel';
 
 
 export default async function companyUpdate(req, res){

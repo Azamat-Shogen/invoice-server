@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import requireLogin from '../user/controllers/requireLogin.js';
-import runCompanyValidation from './validators/index.js';
-import createCompanyAccount from './controllers/createCompany.js';
-import { companyValidation, companyUpdateValidation } from './validators/companyValidaton.js';
-import companyAccountGetById from './controllers/getCompanyById.js';
-import companyUpdate from './controllers/updateCompany.js';
+import requireLogin from '../user/controllers/requireLogin';
+import runCompanyValidation from './validators';
+import createCompanyAccount from './controllers/createCompany';
+import { companyValidation, companyUpdateValidation } from './validators/companyValidaton';
+import companyAccountGetById from './controllers/getCompanyById';
+import companyUpdate from './controllers/updateCompany';
 
 
 const router = Router();
