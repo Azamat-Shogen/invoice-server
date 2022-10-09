@@ -1,13 +1,13 @@
 {
   "name": "invoice-server",
   "version": "1.0.0",
-  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "nodemon --inspect --exec babel-node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node src/index.js -d build"
+    "build": "babel src/index.js -d build",
+    "babel-node": "babel-node --presets='@babel/preset-env' --ignore='foo|bar|baz'"
   },
   "author": "AZ",
   "license": "ISC",
@@ -29,7 +29,7 @@
   "devDependencies": {
     "@babel/cli": "^7.17.10",
     "@babel/core": "^7.17.10",
-    "@babel/node": "^7.17.10",
+    "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.17.10",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
